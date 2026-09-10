@@ -405,6 +405,13 @@ steamos-manager.map = true
 # not relevant to us
 steamos-media-creation-git.ignore = true
 
+# Allows switching between iwd and wpa_supplicant wifi backends from Steam
+# FIXME: doesn't seem to be wired up?
+steamos-networking-tools.check = "1.3-1"
+
+# some A/B thing
+steamos-passwd.ignore = true
+
 steamos-powerbuttond.map = "powerbuttond"
 
 # more A/B stuff

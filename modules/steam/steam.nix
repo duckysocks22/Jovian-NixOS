@@ -131,7 +131,6 @@ in
       ];
 
       # From steam-jupiter
-      # FIXME: investigate LED stuff
       services.udev.extraRules = ''
         # USB devices and topological children
         SUBSYSTEMS=="usb", TAG+="uaccess"
@@ -141,7 +140,18 @@ in
 
         # Steam Controller udev write access
         KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
+
+        # Steam Controller Wakeup Support
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1102", ATTR{power/wakeup}="enabled"
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1142", ATTR{power/wakeup}="enabled"
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1302", ATTR{power/wakeup}="enabled"
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1304", ATTR{power/wakeup}="enabled"
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1305", ATTR{power/wakeup}="enabled"
       '';
+
+      systemd.tmpfiles.rules = [
+        "z! /sys/class/leds/*/* 0660 - users - - -"
+      ];
 
       # The responsibility for the equivalent action when out of battery charge is
       # taken by a combination of vpower and SteamUI, when it dips below 0.5% (at the

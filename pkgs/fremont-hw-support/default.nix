@@ -1,27 +1,12 @@
 { lib
 , stdenv
-, callPackage
-, resholve
-, bash
-, coreutils
-, e2fsprogs
-, exfatprogs
-, f3
-, findutils
-, gawk
-, gnugrep
-, gnused
-, jq
-, parted
-, procps
-, systemd
-, util-linux
+, fetchFromGitHub
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "fremont-hw-support";
   version = "20260807.1";
 
-  src = {
+  src = fetchFromGitHub {
     owner = "duckysocks22";
     repo = "fremont-hw-support";
     rev = "fremont-${finalAttrs.version}";

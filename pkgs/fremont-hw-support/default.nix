@@ -17,14 +17,14 @@
 , systemd
 , util-linux
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation (finalAttrs: {
   pname = "fremont-hw-support";
   version = "20260807.1";
 
   src = {
     owner = "duckysocks22";
     repo = "fremont-hw-support";
-    rev = "fremont-${version}";
+    rev = "fremont-${finalAttrs.version}";
     hash = "sha256-WXn37xArjWR9PJYWClgpJ1K1bpWQ0ivlBaqjAvAqZ6E=";
   };
   
@@ -44,4 +44,4 @@ stdenv.mkDerivation {
     '';
     license = licenses.unfreeRedistributableFirmware;
   };
-}
+})

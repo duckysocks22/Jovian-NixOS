@@ -2,6 +2,17 @@
 
 let
   cfg = config.jovian.devices.steammachine;
+
+
+  alsa-ucm-conf' = pkgs.runCommand "jovian-ucm-conf" {} ''
+    cp -r --no-preserve=all ${pkgs.alsa-ucm-conf} $out
+
+    # override acp5x configs with Jovian stuff
+    cp -rf ${pkgs.steamdeck-dsp}/share/alsa $out/share
+    
+    # remove more specific upstream symlink so Valve acp5x config is picked
+    rm $out/share/alsa/ucm2/conf.d/acp5x/Valve-Jupiter-1.conf
+  '';
 in
 {
   options = {

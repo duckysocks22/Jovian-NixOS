@@ -142,6 +142,14 @@ in
         # Steam Controller udev write access
         KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
 
+        # Steam Controller Wakeup Support
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1102", ATTR{power/wakeup}="enabled"
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1142", ATTR{power/wakeup}="enabled"
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1302", ATTR{power/wakeup}="enabled"
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1304", ATTR{power/wakeup}="enabled"
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1305", ATTR{power/wakeup}="enabled"
+
+
         # LED write access
         SUBSYSTEM=="leds", RUN+="${pkgs.coreutils}/bin/chown ${cfg.user}'/sys/class/leds/%k/brightness'"
         SUBSYSTEM=="leds", RUN+="${pkgs.coreutils}/bin/chown ${cfg.user} '/sys/class/leds/%k/brightness_scale'"

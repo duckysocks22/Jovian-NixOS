@@ -30,6 +30,24 @@ let
     "led_brightness_multiplier"
   ];
 
+  ledAttrs = [
+    "brightness"
+    "brightness_scale"
+    "brightness_startup"
+    "effect"
+    "enabled"
+    "mode"
+    "multi_intensity"
+    "multi_intensity_startup"
+    "profile"
+    "speed"
+    "delay"
+    "trigger"
+    "delay_on"
+    "delay_off"
+    "led_brightness_multiplier"
+  ];
+
   cfg = config.jovian.steam;
 in
 {

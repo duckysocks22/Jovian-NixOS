@@ -12,7 +12,11 @@ let
     mkMerge
     mkOption
     types
+<<<<<<< HEAD
     ;
+=======
+  ;
+>>>>>>> f81637a (devices/steammachine: Init support for Steam Machine (fremont))
   cfg = config.jovian.devices.steammachine;
 in
 {

@@ -29,6 +29,6 @@ in
   };
 
   config = mkIf (cfg.enableVendorKernel) {
-    boot.kernelPackages = mkDefault pkgs.linuxPackages_jovian;
+    boot.kernelPackages = mkDefault pkgs.jovianPackages.linuxPackages;
   };
 }

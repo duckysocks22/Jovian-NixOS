@@ -37,6 +37,11 @@ in
   };
 
   config = mkMerge [
+    (mkIf (cfg.enable) {
+      hardware.firmware = [
+        (lib.hiPrio pkgs.linux-firmware-jupister)
+      ];
+    })
     (mkIf (cfg.enableFwupdBiosUpdates) {
       services.fwupd.enable = true;
 

@@ -10,7 +10,7 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "duckysocks22";
     repo = "fremont-hw-support";
     rev = "fremont-${finalAttrs.version}";
-    hash = "sha256-WXn37xArjWR9PJYWClgpJ1K1bpWQ0ivlBaqjAvAqZ6E=";
+    hash = "sha256-WXn37xArjWR9PJYWClgpJ1K1bpWQ1ivlBaqjAvAqZ6E=";
   };
   
   dontConfigure = true;

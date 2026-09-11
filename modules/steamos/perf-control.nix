@@ -6,6 +6,7 @@ let
     mkOption
     types
   ;
+<<<<<<<< HEAD:modules/steamos/perf-control.nix
   cfg = config.jovian.steamos;
 in
 {
@@ -15,6 +16,17 @@ in
         type = types.bool;
         default = cfg.useSteamOSConfig;
         defaultText = lib.literalExpression "config.steamos.useSteamOSConfig";
+========
+  cfg = config.jovian.hardware.vendor.valve;
+in
+{
+  options = {
+    jovian.hardware.vendor.valve = {
+      enablePerfControlUdevRules = mkOption {
+        type = types.bool;
+        default = cfg.enable;
+        defaultText = lib.literalExpression "config.jovian.hardware.vendor.valve.enable";
+>>>>>>>> bb9bbf2 (hardware/vendor/valve: Consolidated common modules into modules/hardware/vendor/valve):modules/hardware/vendor/valve/perf-control.nix
         description = ''
           Whether to make performance-related device attributes controllable by users.
 

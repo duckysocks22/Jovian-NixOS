@@ -7,11 +7,19 @@ let
     mkOption
     types
   ;
+<<<<<<<< HEAD:modules/steamos/fan-control.nix
   cfg = config.jovian.steamos;
 in
 {
   options = {
     jovian.steamos = {
+========
+  cfg = config.jovian.hardware.vendor.valve;
+in
+{
+  options = {
+    jovian.hardware.vendor.valve = {
+>>>>>>>> bb9bbf2 (hardware/vendor/valve: Consolidated common modules into modules/hardware/vendor/valve):modules/hardware/vendor/valve/fan-control.nix
       enableOsFanControl = mkOption {
         description = ''
           Whether to enable the OS-controlled fan curve.
@@ -19,8 +27,13 @@ in
           This is enabled by default since SteamOS 3.2.
         '';
         type = types.bool;
+<<<<<<<< HEAD:modules/steamos/fan-control.nix
         default = cfg.useSteamOSConfig;
         defaultText = lib.literalExpression "config.jovian.steamos.useSteamOSConfig";
+========
+        default = cfg.enable;
+        defaultText = lib.literalExpression "config.jovian.hardware.vendor.valve.enable";
+>>>>>>>> bb9bbf2 (hardware/vendor/valve: Consolidated common modules into modules/hardware/vendor/valve):modules/hardware/vendor/valve/fan-control.nix
       };
     };
   };

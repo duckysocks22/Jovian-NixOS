@@ -7,6 +7,7 @@ let
     mkOption
     types
   ;
+<<<<<<<< HEAD:modules/steamos/controller.nix
   cfg = config.jovian.steamos;
 in
 {
@@ -16,6 +17,17 @@ in
         type = types.bool;
         default = cfg.useSteamOSConfig;
         defaultText = lib.literalExpression "config.jovian.steamos.useSteamOSConfig";
+========
+  cfg = config.jovian.hardware.vendor.valve;
+in
+{
+  options = {
+    jovian.hardware.vendor.valve = {
+      enableControllerUdevRules = mkOption {
+        type = types.bool;
+        default = cfg.enable;
+        defaultText = lib.literalExpression "config.jovian.hardware.vendor.valve.enable";
+>>>>>>>> bb9bbf2 (hardware/vendor/valve: Consolidated common modules into modules/hardware/vendor/valve):modules/hardware/vendor/valve/controller.nix
         description = ''
             Enables udev rules to make the controller controllable by users.
 

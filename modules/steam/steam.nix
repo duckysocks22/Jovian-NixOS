@@ -154,7 +154,7 @@ in
 
       # LED Control Support
       systemd.tmpfiles.rules = [
-        "z! /sys/class/leds/*/* 0660 - users - - - "
+        "z /sys/class/leds/*/* 0660 - users"
       ];
       # The responsibility for the equivalent action when out of battery charge is
       # taken by a combination of vpower and SteamUI, when it dips below 0.5% (at the

@@ -149,12 +149,13 @@ in
         ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1305", ATTR{power/wakeup}="enabled"
 
         # LED Control Support
-        SUBSYSTEM=="leds", RUN+="${pkgs.systemd}/bin/systemd-tmpfiles --create --prefix=/sys/class/leds"
+        SUBSYSTEM=="leds", RUN+="${pkgs.systemd}/bin/systemd-tmpfiles --create --prefix=/sys/devices"
       '';
 
       # LED Control Support
       systemd.tmpfiles.rules = [
-        "z /sys/class/leds/*/* 0660 - users"
+        "z /sys/devices/platform/valve-leds/leds/*/* 0660 - users"
+        "z /sys/devices/*/*/*/*/steamdeck-leds/leds/*/* 0660 - users"
       ];
       # The responsibility for the equivalent action when out of battery charge is
       # taken by a combination of vpower and SteamUI, when it dips below 0.5% (at the

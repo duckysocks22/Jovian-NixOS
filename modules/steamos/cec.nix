@@ -37,13 +37,25 @@ in
     systemd.packages = [
       pkgs.jovianPackages.cecd
       pkgs.jovianPackages.inputattach-cec-units
-    ];
+      pkgs.cec-audio-control
+   ];
 
     systemd.user.services.cecd = {
       overrideStrategy = "asDropin";
       wantedBy = [ "graphical-session.target" ];
       wants = [ "steamos-manager-configure-cecd.service" ];
       after = [ "steamos-manager-configure-cecd.service" ];
+    };
+
+    systemd.user.sockets.cec-audio-control = {
+      overrideStrategy = "asDropin";
+      wantedBy = [ "sockets.target" ];
+    };
+
+    systemd.user.services.cec-audio-control = {
+      overrideStrategy = "asDropin";
+      wants = [ "cecd.service" ];
+      after = [ "cecd.service" ];
     };
   };
 }

@@ -5,6 +5,10 @@ final: prev: {
       kernelPatches = [
         final.kernelPatches.bridge_stp_helper
         final.kernelPatches.request_key_helper
+        {
+          name = "fix-cec-probe-order";
+          patch = ./pkgs/linux/cros-ec-cec-make-notifier-pairing-probe-order-agnostic.patch;
+        }
       ];
     };
     linuxPackages = final.linuxPackagesFor self.linux;
@@ -83,6 +87,7 @@ final: prev: {
     jovian-stubs = self.callPackage ./pkgs/jovian-stubs { };
     jovian-steam-protocol-handler = self.callPackage ./pkgs/jovian-steam-protocol-handler { };
 
+<<<<<<< HEAD
     steam-unwrapped = self.callPackage ./pkgs/steam/unwrapped.nix {
       steam-unwrapped' = prev.steam-unwrapped;
     };
@@ -90,6 +95,11 @@ final: prev: {
       steam' = prev.steam;
     };
     steam-run = self.steam.run;
+=======
+  cecd = final.callPackage ./pkgs/cecd { };
+  cec-audio-control = final.callPackage ./pkgs/cec-audio-control { };
+  inputattach-cec-units = final.callPackage ./pkgs/inputattach-cec-units { };
+>>>>>>> b934692 (steamos: Packaged and included 'cec-audio-control' for use of CEC audio controls on 'fremont')
 
     # desktop VRAM optimizations
     dmemcg-booster = self.callPackage ./pkgs/dmemcg-booster { };

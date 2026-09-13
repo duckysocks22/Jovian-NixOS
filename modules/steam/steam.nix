@@ -147,11 +147,10 @@ in
         ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1302", ATTR{power/wakeup}="enabled"
         ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1304", ATTR{power/wakeup}="enabled"
         ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1305", ATTR{power/wakeup}="enabled"
-      '';
 
-      systemd.tmpfiles.rules = [
-        "z! /sys/class/leds/*/* 0660 - users - - -"
-      ];
+        # LED Control Support
+        SUBSYSTEM=="leds", RUN+="${pkgs.systemd}/bin/systemd-tmpfiles --create --prefix=/sys/class/leds"
+      '';
 
       # The responsibility for the equivalent action when out of battery charge is
       # taken by a combination of vpower and SteamUI, when it dips below 0.5% (at the

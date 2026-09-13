@@ -39,7 +39,7 @@ in
   config = mkMerge [
     (mkIf (cfg.enable) {
       hardware.firmware = [
-        (lib.hiPrio pkgs.linux-firmware-jupister)
+        (lib.hiPrio pkgs.linux-firmware-jupiter)
       ];
     })
     (mkIf (cfg.enableFwupdBiosUpdates) {

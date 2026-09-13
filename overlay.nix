@@ -104,6 +104,7 @@ rec {
   };
 
   cecd = final.callPackage ./pkgs/cecd { };
+  cec-audio-control = final.callPackage ./pkgs/cec-audio-control { };
   inputattach-cec-units = final.callPackage ./pkgs/inputattach-cec-units { };
 
   dmemcg-booster = final.callPackage ./pkgs/dmemcg-booster { };

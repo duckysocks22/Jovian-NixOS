@@ -7,7 +7,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "20260807.1";
 
   src = fetchFromGitHub {
-    owner = "duckysocks22";
+    owner = "Jovian-Experiments";
     repo = "fremont-hw-support";
     rev = "fremont-${finalAttrs.version}";
     hash = "sha256-WXn37xArjWR9PJYWClgpJ1K1bpWQ1ivlBaqjAvAqZ6E=";

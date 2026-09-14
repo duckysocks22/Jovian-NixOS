@@ -17,7 +17,7 @@ rec {
       kernelPatches.request_key_helper
       {
         name = "fix-cec-probe-order";
-        patch = ./pkgs/linux-jovian/fix-cec-probe-order.patch;
+        patch = ./pkgs/linux-jovian/cros-ec-cec-make-notifier-pairing-probe-order-agnostic.patch;
       }
     ];
   };

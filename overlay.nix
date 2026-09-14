@@ -15,6 +15,10 @@ rec {
     kernelPatches = [
       kernelPatches.bridge_stp_helper
       kernelPatches.request_key_helper
+      {
+        name = "fix-cec-probe-order";
+        patch = ./pkgs/linux-jovian/fix-cec-probe-order.patch;
+      }
     ];
   };
 

@@ -46,6 +46,9 @@ in
   in lib.mkIf cfg.enable {
     services.pulseaudio.enable = false;
 
+    # Required for 'pactl' to be available to Steam within PATH
+    environment.systemPackages = [ pkgs.pulseaudio ];
+
     services.pipewire = {
       enable = true;
       package = pkgs.pipewire-jupiter;

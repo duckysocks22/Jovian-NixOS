@@ -16,7 +16,7 @@ rec {
       kernelPatches.bridge_stp_helper
       kernelPatches.request_key_helper
       {
-        name = "fix-cec-probe-order";
+        name = "cros-ec-cec-make-notifier-pairing-probe-order-agnostic";
         patch = ./pkgs/linux-jovian/cros-ec-cec-make-notifier-pairing-probe-order-agnostic.patch;
       }
     ];
@@ -68,8 +68,12 @@ rec {
   pipewire-jupiter = final.callPackage ./pkgs/pipewire {
     pipewire' = prev.pipewire;
   };
+
+  # Builds 'wireplumber-jupiter' against the 'pipewire-jupiter' fork to allow Steam Client to recognize CEC support.
   wireplumber-jupiter = final.callPackage ./pkgs/wireplumber {
-    wireplumber' = prev.wireplumber;
+    wireplumber' = prev.wireplumber.override {
+      pipewire = final.pipewire-jupiter;
+    };
   };
 
   opensd = final.callPackage ./pkgs/opensd { };

@@ -58,7 +58,7 @@ in
     })
     (mkIf (cfg.autoUpdate) {
       # Since Valve currently isnt signing their firmware capsules
-      services.fwupd.daemonSettings = lib.mkDefault = lib.mkDefault false;
+      services.fwupd.daemonSettings = lib.mkDefault false;
 
       systemd.services.fremont-firmware-update = {
         description = "Steam Machine firmware auto-update";

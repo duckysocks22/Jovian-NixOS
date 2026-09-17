@@ -66,7 +66,7 @@ in
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           Type = "oneshot";
-          ExecStart = "${config.services.fwupd.package}/bin/fwupdmgr update --assume-yes com.valvesoftware.fremont.firmware";
+          ExecStart = "${config.services.fwupd.package}/bin/fwupdmgr update --assume-yes 47b13de8-b6ee-4a22-bcd3-7fe5e1a660de";
         };
       };
     })

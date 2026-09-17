@@ -26,6 +26,13 @@ in
           Whether to use fwupd to update the BIOS.
         '';
       };
+      autoUpdate = mkOption {
+        type = types.bool;
+        default = false;
+        description = ''
+          Whether to automatically update the System BIOS.
+        '';
+      };
     };
   };
 
@@ -48,6 +55,20 @@ in
         MetadataURI=file://${pkgs.fremont-hw-support}/share/fwupd/remotes.d/fremont/firmware
         ApprovalRequired=false
       '';
+    })
+    (mkIf (cfg.autoUpdate) {
+      # Since Valve currently isnt signing their firmware capsules
+      services.fwupd.daemonSettings = lib.mkDefault = lib.mkDefault false;
+
+      systemd.services.fremont-firmware-update = {
+        description = "Steam Machine firmware auto-update";
+        before = [ "display-manager.service" ];
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "${config.services.fwupd.package}/bin/fwupdmgr update --assume-yes com.valvesoftware.fremont.firmware";
+        };
+      };
     })
   ];
 }

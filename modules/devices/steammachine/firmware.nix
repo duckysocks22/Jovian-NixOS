@@ -57,9 +57,6 @@ in
       '';
     })
     (mkIf (cfg.autoUpdate) {
-      # Since Valve currently isnt signing their firmware capsules
-      services.fwupd.daemonSettings.OnlyTrusted = lib.mkDefault false;
-
       systemd.services.fremont-firmware-update = {
         description = "Steam Machine firmware auto-update";
         before = [ "display-manager.service" ];

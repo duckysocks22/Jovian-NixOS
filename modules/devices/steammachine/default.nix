@@ -16,6 +16,7 @@ in
   imports = [
     ./kernel.nix
     ./firmware.nix
+    ./ec-log.nix
   ];
 
   options = {

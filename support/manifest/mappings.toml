@@ -53,7 +53,6 @@ calamares-settings-steamos-git.ignore = true
 # more A/B stuff
 casync.ignore = true
 
-# FIXME(fremont): ship this once the pipewire side is ready
 cec-audio-control.ignore = true
 
 cecd.map = true
@@ -95,7 +94,6 @@ drm_janitor.ignore = true
 # FIXME: package
 ds-inhibit.ignore = true
 
-# FIXME(fremont)
 ec-log.ignore = true
 
 # we use nixpkgs version

@@ -182,6 +182,9 @@ buildLinux (args // rec {
     MEDIA_CEC_SUPPORT = yes;
     CEC_CROS_EC = module;
 
+    # EC_LOGGING support (fremont)
+    MFD_CROS_EC_DEV = module;
+
     # Jovian: fix fallout from the vendor-set options
     DRM_AMD_DC_SI = lib.mkForce (option no);
     DRM_HYPERV = lib.mkForce (option no);

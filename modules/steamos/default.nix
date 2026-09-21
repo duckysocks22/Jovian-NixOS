@@ -20,6 +20,7 @@ in
     ./perf-control.nix
     ./rename.nix
     ./sound.nix
+    ./graphics.nix
   ];
   options = {
     jovian.steamos = {

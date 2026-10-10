@@ -165,12 +165,12 @@ in
         ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1302", ATTR{power/wakeup}="enabled"
         ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1304", ATTR{power/wakeup}="enabled"
         ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="1305", ATTR{power/wakeup}="enabled"
-        # LED Control Access 
-        ${lib.concatMapStrings (attr: ''
-          SUBSYSTEM=="leds", RUN+="${pkgs.coreutils}/bin/chgrp users '/sys/class/leds/%k/${attr}'"
-          SUBSYSTEM=="leds", RUN+="${pkgs.coreutils}/bin/chmod 0660 '/sys/class/leds/%k/${attr}'"
-        '') ledAttrs}
       '';
+
+      # LED Control Access
+      systemd.tmpfiles.rules = map
+        (attr: "z /sys/class/leds/*/${attr} 0660 root users - -")
+        ledAttrs;
 
       # The responsibility for the equivalent action when out of battery charge is
       # taken by a combination of vpower and SteamUI, when it dips below 0.5% (at the

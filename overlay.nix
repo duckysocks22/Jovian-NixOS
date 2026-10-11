@@ -16,8 +16,8 @@ rec {
       kernelPatches.bridge_stp_helper
       kernelPatches.request_key_helper
       {
-        name = "cros-ec-cec-make-notifier-pairing-probe-order-agnostic";
-        patch = ./pkgs/linux-jovian/cros-ec-cec-make-notifier-pairing-probe-order-agnostic.patch;
+        name = "cec-notifier-wildcard-fallback-pairing.patch";
+        patch = ./pkgs/linux-jovian/cec-notifier-wildcard-fallback-pairing.patch;
       }
     ];
   };

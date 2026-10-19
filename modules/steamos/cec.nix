@@ -38,7 +38,7 @@ in
       pkgs.jovianPackages.cecd
       pkgs.jovianPackages.inputattach-cec-units
       pkgs.cec-audio-control
-   ];
+    ];
 
     systemd.user.services.cecd = {
       overrideStrategy = "asDropin";

@@ -6,7 +6,7 @@ let
     mkMerge
     mkOption
     types
-  ;
+    ;
   cfg = config.jovian.devices.steammachine;
 in
 {
@@ -17,10 +17,10 @@ in
         default = cfg.enable;
         defaultText = lib.literalExpression "config.jovian.devices.steammachine.enable";
         description = ''
-            Enables udev rules to make the controller controllable by users.
+          Enables udev rules to make the controller controllable by users.
 
-            Without this, neither steam, nor any other userspace client can
-            switch the controller from out of its default "lizard" mode.
+          Without this, neither steam, nor any other userspace client can
+          switch the controller from out of its default "lizard" mode.
         '';
       };
     };
